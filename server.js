@@ -22,9 +22,9 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use((req, res, next) => {
-    res.render('maintenance')
-})
+// app.use((req, res, next) => {
+//     res.render('maintenance')
+// })
 
 app.use(express.static(__dirname+'/public'));
 
@@ -51,10 +51,21 @@ app.get('/about', (request, response) => {
     })
 })
 
+app.get('/projects', (request, response) => {
+    //response.send('<h1> Hello from express! </h1>');
+    response.render('projects.hbs', {
+        pageTitle: 'Projects Page'
+    })
+})
+
 app.get('/bad', (request, response) => {
     response.send({
         error:'bad route'
     })
+})
+
+app.get('/yo' , (request, response) => {
+    response.send('<h1>Yo</h1>');
 })
 
 app.listen(port, () => {
